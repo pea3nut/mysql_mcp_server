@@ -40,41 +40,12 @@ autohand mcp add mysql env MYSQL_HOST=localhost MYSQL_PORT=3306 MYSQL_USER=your_
 
 Add `--scope project` after `mcp add` to keep the registration in the current workspace. See [Autohand Code](https://github.com/autohandai/code-cli/) for current CLI details.
 
-### Register in Cursor, Codex, or Gemini CLI
-
-[agent-add](https://github.com/pea3nut/agent-add) is an optional CLI that writes the
-same MCP server definition to different clients' configuration files. Install
-[uv](https://docs.astral.sh/uv/) first, then save this as `mysql.mcp.json` in
-your working project, replacing the example database credentials:
-
-```json
-{
-  "mcpServers": {
-    "mysql": {
-      "command": "uvx",
-      "args": ["mysql_mcp_server"],
-      "env": {
-        "MYSQL_HOST": "localhost",
-        "MYSQL_PORT": "3306",
-        "MYSQL_USER": "your_username",
-        "MYSQL_PASSWORD": "your_password",
-        "MYSQL_DATABASE": "your_database"
-      }
-    }
-  }
-}
-```
-
-With Node.js 18+ installed, run from that project:
-
+### Installing via Agent Add
 ```bash
-npx -y agent-add@1.3.1 --host cursor --mcp ./mysql.mcp.json
+npx -y agent-add --mcp '{"mysql":{"command":"uvx","args":["mysql_mcp_server"],"env":{"MYSQL_HOST":"localhost","MYSQL_PORT":"3306","MYSQL_USER":"your_username","MYSQL_PASSWORD":"your_password","MYSQL_DATABASE":"your_database"}}}'
 ```
 
-Use `--host codex` or `--host gemini` for those clients. Registration is scoped
-to the current project; add `--global` for your user configuration. Keep files
-containing real credentials out of version control. Restart the client and check
-that the server connects; registration alone does not test database access.
+Requires Node.js 18+ and [uv](https://docs.astral.sh/uv/). Replace the example credentials, then select your MCP client when [Agent Add](https://github.com/pea3nut/agent-add) prompts you.
 
 ## Configuration
 Set the following environment variables:
