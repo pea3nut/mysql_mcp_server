@@ -42,7 +42,7 @@ Add `--scope project` after `mcp add` to keep the registration in the current wo
 
 ### Installing via Agent Add
 ```bash
-npx -y agent-add --mcp '{"mysql":{"command":"uvx","args":["mysql_mcp_server"],"env":{"MYSQL_HOST":"localhost","MYSQL_PORT":"3306","MYSQL_USER":"your_username","MYSQL_PASSWORD":"your_password","MYSQL_DATABASE":"your_database"}}}'
+npx -y agent-add --global --mcp '{"mysql":{"command":"uvx","args":["mysql_mcp_server"],"env":{"MYSQL_HOST":"localhost","MYSQL_PORT":"3306","MYSQL_USER":"your_username","MYSQL_PASSWORD":"your_password","MYSQL_DATABASE":"your_database"}}}'
 ```
 
 Requires Node.js 18+ and [uv](https://docs.astral.sh/uv/). Replace the example credentials, then select your MCP client when [Agent Add](https://github.com/pea3nut/agent-add) prompts you.
